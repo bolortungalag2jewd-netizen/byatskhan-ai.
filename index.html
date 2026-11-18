@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Бяцхан AI найз — Монгол хүүхдийн 10 шидэт ертөнц</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap');
+
+:root {
+  --text-dark: #2d3436;
+  --primary: #6c5ce7;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Nunito', 'Segoe UI', Roboto, Arial, sans-serif;
+}
+
+body {
+  background: linear-gradient(180deg, #a1c4fd 0%, #c2e9fb 30%, #fff6e5 70%, #ffeaa7 100%);
+  background-attachment: fixed;
+  color: var(--text-dark);
+  padding-bottom: 135px;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ДЭЭД ШИЛЭН ЦЭС */
+header {
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(12px);
+  padding: 12px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 6px 20px rgba(74, 105, 189, 0.14);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 3px solid #ffffff;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.logo-area { display: flex; align-items: center; gap: 12px; cursor: pointer; }
+.logo-icon {
+  background: linear-gradient(135deg, #ff7675, #fdcb6e);
+  color: #ffffff;
+  width: 46px; height: 46px;
+  border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px;
+  box-shadow: 0 4px 0 #e17055;
+}
+.logo-text h1 { font-size: 20px; color: #2d3436; font-weight: 900; }
+.logo-text span { font-size: 11.5px; color: #6c5ce7; font-weight: 800; }
+
+.header-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.cloud-badge {
+  background: #dff9fb; color: #0984e3; border: 1.5px solid #74b9ff;
+  padding: 6px 12px; border-radius: 16px; font-size: 12px; font-weight: 800;
+}
+.age-pill {
+  background: linear-gradient(135deg, #ffeaa7, #fdcb6e);
+  color: #2d3436; border: 2px solid #ffffff;
+  padding: 8px 14px; border-radius: 24px; font-size: 13.5px; font-weight: 800; cursor: pointer;
+}
+.teacher-btn {
+  background: linear-gradient(135deg, #74b9ff, #0984e3);
+  color: #ffffff; border: 2px solid #ffffff;
+  padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 900; cursor: pointer;
+  box-shadow: 0 4px 0 #0769b5;
+}
+
+.container { max-width: 1180px; margin: 0 auto; padding: 24px 20px; }
+
+/* НҮҮР БАННЕР */
+.hero {
+  background: linear-gradient(135deg, #ff6b81 0%, #ff9f43 45%, #feca57 100%);
+  border-radius: 32px; padding: 30px 34px; color: #ffffff;
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 28px; gap: 24px; flex-wrap: wrap;
+  border: 4px solid #ffffff;
+  box-shadow: 0 14px 30px rgba(255, 107, 129, 0.28), 0 8px 0 #ee5253;
+}
+.hero-text { flex: 1; min-width: 280px; }
+.hero-badge {
+  display: inline-block; background: rgba(255,255,255,0.28);
+  padding: 6px 16px; border-radius: 24px; font-size: 12.5px; font-weight: 800; margin-bottom: 12px;
+}
+.hero-text h2 { font-size: 32px; line-height: 1.2; margin-bottom: 10px; font-weight: 900; }
+.hero-text p { font-size: 15px; line-height: 1.55; margin-bottom: 18px; max-width: 580px; font-weight: 700; }
+
+.hero-cta-group { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn-3d-green {
+  background: linear-gradient(180deg, #2ed573, #1eae58); color: #ffffff; border: 3px solid #ffffff;
+  padding: 12px 20px; border-radius: 20px; font-weight: 900; font-size: 14px; cursor: pointer;
+}
+.btn-3d-blue {
+  background: linear-gradient(180deg, #1e90ff, #0984e3); color: #ffffff; border: 3px solid #ffffff;
+  padding: 12px 20px; border-radius: 20px; font-weight: 900; font-size: 14px; cursor: pointer;
+}
+
+.hero-robot-box {
+  width: 145px; height: 145px;
+  background: radial-gradient(circle at 30% 30%, #ffffff, #dfe6e9);
+  border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  font-size: 68px; position: relative; border: 5px solid #ffffff; cursor: pointer;
+}
+.hero-robot-box.speaking { animation: pulseRobot 0.45s infinite alternate; }
+@keyframes pulseRobot { from { transform: scale(1); } to { transform: scale(1.1); } }
+.robot-tag {
+  position: absolute; bottom: -10px;
+  background: linear-gradient(135deg, #a29bfe, #6c5ce7); color: #ffffff;
+  padding: 5px 14px; border-radius: 16px; font-size: 12.5px; font-weight: 900; border: 2px solid #ffffff;
+}
+
+/* ТАВАН ХОШУУ МАЛ БА АВИА ДУУДЛАГА */
+.phonics-bar {
+  background: rgba(255, 255, 255, 0.94); border-radius: 28px;
+  padding: 20px 24px; margin-bottom: 28px; border: 4px solid #ffffff;
+}
+.phonics-title h3 { font-size: 18px; color: #6c5ce7; font-weight: 900; margin-bottom: 6px; }
+.phonics-group-label { font-size: 13px; font-weight: 800; color: #2d3436; margin: 10px 0 6px 0; display: block; }
+.phonics-chips { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.p-chip {
+  background: linear-gradient(180deg, #a29bfe, #6c5ce7); color: #ffffff; border: 2px solid #ffffff;
+  padding: 8px 14px; border-radius: 16px; font-size: 13px; font-weight: 800; cursor: pointer;
+}
+.p-chip.livestock { background: linear-gradient(180deg, #ff9f43, #ee5253); }
+.p-chip.baby { background: linear-gradient(180deg, #2ed573, #10ac84); }
+
+/* 10 ЕРТӨНЦ */
+.section-head { margin-bottom: 20px; text-align: center; }
+.section-head small { display: inline-block; background: #ffffff; color: #6c5ce7; padding: 5px 16px; border-radius: 20px; font-weight: 900; font-size: 12px; }
+.section-head h2 { font-size: 28px; margin-top: 8px; font-weight: 900; color: #2d3436; }
+
+.worlds-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(225px, 1fr)); gap: 20px; }
+.world-card {
+  border-radius: 26px; padding: 22px 20px; color: #ffffff; cursor: pointer;
+  transition: transform 0.2s ease; border: 4px solid #ffffff;
+  display: flex; flex-direction: column; justify-content: space-between;
+}
+.world-card:hover { transform: translateY(-6px) scale(1.02); }
+
+.w-theme-1 { background: linear-gradient(135deg, #ff9f43 0%, #ff6b6b 100%); box-shadow: 0 8px 0 #ee5253; }
+.w-theme-2 { background: linear-gradient(135deg, #54a0ff 0%, #2e86de 100%); box-shadow: 0 8px 0 #0984e3; }
+.w-theme-3 { background: linear-gradient(135deg, #a29bfe 0%, #6c5ce7 100%); box-shadow: 0 8px 0 #4834d4; }
+.w-theme-4 { background: linear-gradient(135deg, #2ed573 0%, #10ac84 100%); box-shadow: 0 8px 0 #009432; }
+.w-theme-5 { background: linear-gradient(135deg, #ff7979 0%, #eb4d4b 100%); box-shadow: 0 8px 0 #b33939; }
+.w-theme-6 { background: linear-gradient(135deg, #feca57 0%, #ff9f43 100%); box-shadow: 0 8px 0 #e58e26; color: #2d3436; }
+.w-theme-7 { background: linear-gradient(135deg, #ff9ff3 0%, #f368e0 100%); box-shadow: 0 8px 0 #be2edd; }
+.w-theme-8 { background: linear-gradient(135deg, #48dbfb 0%, #0abde3 100%); box-shadow: 0 8px 0 #0097e6; }
+.w-theme-9 { background: linear-gradient(135deg, #5f27cd 0%, #341f97 100%); box-shadow: 0 8px 0 #192a56; }
+.w-theme-10 { background: linear-gradient(135deg, #ff6b81 0%, #c44569 100%); box-shadow: 0 8px 0 #833471; }
+
+.w-icon { width: 58px; height: 58px; border-radius: 20px; background: rgba(255, 255, 255, 0.94); display: flex; align-items: center; justify-content: center; font-size: 30px; margin-bottom: 12px; }
+.world-card h4 { font-size: 18px; margin-bottom: 6px; font-weight: 900; }
+.world-card p { font-size: 13px; line-height: 1.45; font-weight: 700; }
+.w-badge { display: inline-block; margin-top: 14px; font-size: 11.5px; font-weight: 900; color: #2d3436; background: #ffffff; padding: 6px 12px; border-radius: 12px; width: fit-content; }
+
+/* ЦОНХ (MODAL) */
+.modal {
+  display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(25, 42, 86, 0.72); backdrop-filter: blur(6px);
+  z-index: 300; align-items: center; justify-content: center; padding: 14px;
+}
+.modal-box {
+  background: linear-gradient(180deg, #ffffff 0%, #f8f9ff 100%);
+  border-radius: 28px; max-width: 940px; width: 100%;
+  max-height: 94vh; overflow-y: auto; padding: 26px; position: relative;
+  border: 5px solid #ffeaa7;
+}
+.close-modal {
+  position: absolute; top: 18px; right: 18px; background: #ff7675; color: #ffffff;
+  border: 2px solid #ffffff; width: 42px; height: 42px; border-radius: 50%; font-size: 18px; font-weight: 900; cursor: pointer;
+}
+.modal-header h3 { font-size: 23px; color: #6c5ce7; font-weight: 900; }
+.modal-header p { font-size: 14px; color: #636e72; margin-top: 4px; font-weight: 700; }
+
+/* ЕРТӨНЦ ДОТОРХ БАГШИЙН НЭМЭЛТ КОНТЕНТ БҮС */
+.custom-world-feed {
+  background: linear-gradient(135deg, #eef7ff 0%, #f3f0ff 100%);
+  border: 3px solid #a29bfe;
+  border-radius: 22px;
+  padding: 16px;
+  margin-top: 14px;
+}
+.custom-world-feed h4 { color: #6c5ce7; font-size: 16px; margin-bottom: 10px; font-weight: 900; }
+.media-card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; }
+.media-item-box {
+  background: #ffffff; border-radius: 18px; padding: 14px; border: 2px solid #dcd6f7;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+}
+.media-item-box img { width: 100%; height: 170px; object-fit: cover; border-radius: 12px; margin-bottom: 8px; }
+.media-item-box video { width: 100%; max-height: 200px; border-radius: 12px; margin-bottom: 8px; background: #000; }
+.media-item-box audio { width: 100%; margin: 8px 0; }
+
+/* 1-Р ЕРТӨНЦ */
+.living-stage-box { background: linear-gradient(180deg, #74b9ff 0%, #81ecec 55%, #55efc4 100%); border: 4px solid #ffffff; border-radius: 26px; padding: 20px; margin-top: 12px; }
+.living-top-flex { display: flex; gap: 20px; align-items: center; justify-content: center; flex-wrap: wrap; }
+.photo-frame {
+  width: 280px; height: 230px; border-radius: 24px; overflow: hidden;
+  border: 6px solid #ffffff; cursor: pointer; background: #ffffff; position: relative;
+  animation: aliveBreathe 2.6s infinite ease-in-out;
+}
+.photo-frame.talking { animation: bouncePhoto 0.4s infinite alternate; border-color: #ffeaa7; }
+@keyframes aliveBreathe { 0%, 100% { transform: scale(1) translateY(0); } 50% { transform: scale(1.03) translateY(-6px); } }
+@keyframes bouncePhoto { 0% { transform: scale(1) rotate(-2deg); } 100% { transform: scale(1.07) rotate(2deg); } }
+.photo-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.photo-overlay-badge { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.75); color: #ffffff; padding: 5px 14px; border-radius: 16px; font-size: 13px; font-weight: 900; white-space: nowrap; }
+
+.detail-grid-4 { flex: 1; min-width: 260px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.detail-pill { background: rgba(255, 255, 255, 0.95); border-radius: 18px; padding: 12px; text-align: left; cursor: pointer; border: 2px solid #ffffff; }
+.detail-pill:hover { background: #ffeaa7; }
+.detail-pill small { display: block; font-size: 11px; font-weight: 900; color: #6c5ce7; }
+.detail-pill strong { display: block; font-size: 13.5px; color: #2d3436; margin-top: 3px; font-weight: 800; }
+
+.grid-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px; margin-top: 14px; }
+.item-card { background: #ffffff; border: 3px solid #dcd6f7; border-radius: 18px; padding: 10px; text-align: center; cursor: pointer; }
+.item-card:hover, .item-card.active-animal { border-color: #6c5ce7; background: #ffeaa7; }
+.item-card img { width: 78px; height: 78px; object-fit: cover; border-radius: 14px; margin-bottom: 6px; }
+.item-card strong { font-size: 14px; display: block; font-weight: 900; }
+
+/* 2-Р ЕРТӨНЦ */
+.story-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin: 14px 0; }
+.story-tab { background: #f1f2f6; border: 2px solid #dfe6e9; padding: 8px 14px; border-radius: 16px; font-size: 13px; font-weight: 800; cursor: pointer; }
+.story-tab.active, .story-tab:hover { background: #6c5ce7; color: #ffffff; border-color: #6c5ce7; }
+.story-tab.custom-tale-tab { background: #55efc4; color: #2d3436; border-color: #00b894; }
+
+.video-theater { border-radius: 24px; overflow: hidden; border: 4px solid #a29bfe; background: #1e272e; margin-top: 10px; }
+.video-screen { min-height: 250px; padding: 24px 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; position: relative; }
+.v-actors { font-size: 74px; margin: 12px 0; }
+.v-subtitle { background: rgba(0,0,0,0.78); color: #ffffff; padding: 14px 18px; border-radius: 16px; font-size: 15px; line-height: 1.6; max-width: 96%; font-weight: 700; }
+
+/* АДМИН УДИРДЛАГЫН САМБАР */
+.admin-section { background: #f8f9fa; border: 2px solid #dcd6f7; border-radius: 20px; padding: 18px; margin-top: 14px; }
+.admin-section h4 { color: #6c5ce7; font-size: 16px; margin-bottom: 10px; font-weight: 900; }
+.admin-form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; margin-bottom: 10px; }
+.admin-input { width: 100%; padding: 10px 14px; border-radius: 12px; border: 2px solid #dfe6e9; font-size: 13.5px; font-weight: 700; }
+.admin-list-item { display: flex; justify-content: space-between; align-items: center; background: #ffffff; padding: 10px 14px; border-radius: 12px; margin-top: 8px; border: 1px solid #dfe6e9; font-size: 13px; font-weight: 800; gap: 8px; flex-wrap: wrap; }
+.btn-del { background: #ff7675; color: #ffffff; border: none; padding: 6px 12px; border-radius: 10px; font-size: 12px; font-weight: 800; cursor: pointer; }
+.btn-add { background: #00b894; color: #ffffff; border: none; padding: 10px 18px; border-radius: 14px; font-size: 13.5px; font-weight: 900; cursor: pointer; }
+.btn-rec { background: #e17055; color: #ffffff; border: none; padding: 10px 16px; border-radius: 14px; font-size: 13px; font-weight: 900; cursor: pointer; }
+.btn-rec.recording { background: #d63031; animation: pulseRobot 0.5s infinite alternate; }
+
+.chat-box { background: #f3f0ff; border-radius: 18px; padding: 16px; min-height: 120px; margin: 12px 0; border: 2px solid #dcd6f7; font-size: 15px; line-height: 1.6; font-weight: 700; }
+.input-bar { display: flex; gap: 8px; margin-top: 10px; }
+.input-bar input { flex: 1; padding: 12px 16px; border-radius: 16px; border: 2px solid #dcdde1; font-size: 14px; font-weight: 700; }
+.btn-send { background: linear-gradient(180deg, #a29bfe, #6c5ce7); color: #ffffff; border: 2px solid #ffffff; padding: 12px 22px; border-radius: 16px; font-weight: 900; cursor: pointer; }
+
+.audio-bar {
+  position: fixed; bottom: 14px; left: 50%; transform: translateX(-50%);
+  width: 92%; max-width: 960px; background: rgba(255, 255, 255, 0.96);
+  border-radius: 24px; padding: 12px 22px;
+  box-shadow: 0 12px 30px rgba(108, 92, 231, 0.25);
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 10px; border: 3px solid #ffeaa7; z-index: 200;
+}
+.audio-status { display: flex; flex-direction: column; max-width: 55%; }
+.audio-status strong { font-size: 14px; color: #6c5ce7; font-weight: 900; }
+.audio-status span { font-size: 12.5px; color: #2d3436; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.audio-btns { display: flex; gap: 8px; flex-wrap: wrap; }
+.a-btn { background: #f1f2f6; border: 2px solid #dfe6e9; padding: 8px 14px; border-radius: 14px; font-size: 12.5px; font-weight: 800; cursor: pointer; }
+.a-btn.green { background: #55efc4; color: #2d3436; border-color: #00b894; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo-area" onclick="window.scrollTo(0,0)">
+    <div class="logo-icon">✦</div>
+    <div class="logo-text">
+      <h1>Бяцхан AI найз</h1>
+      <span>МОНГОЛ ХҮҮХДИЙН 10 ШИДЭТ ЕРТӨНЦ</span>
+    </div>
+  </div>
+  <div class="header-actions">
+    <span class="cloud-badge" id="cloudSyncStatus">☁️ Санах ой: Бэлэн</span>
+    <select class="age-pill" id="ageSelect" onchange="updateAge()">
+      <option value="2-3">👶 2-3 нас</option>
+      <option value="3-4" selected>🧒 3-4 нас</option>
+      <option value="4-5">👧 4-5 нас</option>
+    </select>
+    <button class="teacher-btn" id="adminLockBtn" onclick="openAdminAuth()">Багшийн самбар 🔒</button>
+  </div>
+</header>
+
+<div class="container">
+  <section class="hero">
+    <div class="hero-text">
+      <div class="hero-badge">🌈 ХҮҮХЭД БҮРИЙН УХААЛАГ НАЙЗ</div>
+      <h2>Сайн уу, бяцхан найз аа!</h2>
+      <p>Намайг Ану гэдэг. 10 шидэт ертөнц бүрээр аялж, багшийн оруулсан бичлэг, дуу хоолой, амьд мэт зургуудыг үзэж тоглоцгооё!</p>
+      <div class="hero-cta-group">
+        <button class="btn-3d-green" onclick="openWorldById(1)">🎨 1. Амилдаг зураг</button>
+        <button class="btn-3d-blue" onclick="openWorldById(2)">🎬 2. Үлгэрийн Театр</button>
+      </div>
+    </div>
+    <div class="hero-robot-box" id="heroRobot" onclick="speakCleanText('Сайн уу, бяцхан найз аа! Намайг Ану гэдэг. Хоёулаа арван ертөнцөөр аялъя!')">
+      🤖
+      <div class="robot-tag">Дарж ярих 🔊</div>
+    </div>
+  </section>
+
+  <!-- ТАВАН ХОШУУ МАЛ БА АВИА ДУУДЛАГА -->
+  <section class="phonics-bar">
+    <div class="phonics-title">
+      <h3>🐎 Таван хошуу мал, Төл мал ба Цэвэр авиа дуудлага</h3>
+    </div>
+    <span class="phonics-group-label">1. Таван хошуу мал:</span>
+    <div class="phonics-chips">
+      <button class="p-chip livestock" onclick="speakClearAnimal('horse')">🐴 Морь (И-го-го)</button>
+      <button class="p-chip livestock" onclick="speakClearAnimal('cow')">🐮 Үхэр (Мөө-мөө)</button>
+      <button class="p-chip livestock" onclick="speakClearAnimal('sheep')">🐑 Хонь (Май-май)</button>
+      <button class="p-chip livestock" onclick="speakClearAnimal('goat')">🐐 Ямаа (Мээ-мээ)</button>
+      <button class="p-chip livestock" onclick="speakClearAnimal('camel')">🐫 Тэмээ (Бүү-бүү)</button>
+    </div>
+    <span class="phonics-group-label">2. Таван хошуу малын төл:</span>
+    <div class="phonics-chips">
+      <button class="p-chip baby" onclick="speakClearAnimal('foal')">🐎 Унага</button>
+      <button class="p-chip baby" onclick="speakClearAnimal('calf')">🐄 Тугал</button>
+      <button class="p-chip baby" onclick="speakClearAnimal('lamb')">🐑 Хурга</button>
+      <button class="p-chip baby" onclick="speakClearAnimal('kid')">🐐 Ишиг</button>
+      <button class="p-chip baby" onclick="speakClearAnimal('camelcalf')">🐪 Ботго</button>
+    </div>
+  </section>
+
+  <!-- 10 ЕРТӨНЦ -->
+  <section id="worlds">
+    <div class="section-head">
+      <small>✨ БАГШИЙН УДИРДЛАГАТАЙ 10 ЕРТӨНЦ ✨</small>
+      <h2>🎈 Дуртай ертөнцөө сонгоорой</h2>
+    </div>
+    <div class="worlds-grid" id="worldsGrid"></div>
+  </section>
+</div>
+
+<div class="audio-bar">
+  <div class="audio-status">
+    <strong>🔊 Ану ба Багшийн дуу хоолой</strong>
+    <span id="audioStatus">Бэлэн байна. Аль ч ертөнц дээр дараарай!</span>
+  </div>
+  <div class="audio-btns">
+    <button class="a-btn green" onclick="speakSyllableMode(lastGeneratedText)">🔤 Үеэр тод дуудах</button>
+    <button class="a-btn" onclick="speakCleanText(lastGeneratedText)">🗣 Дахин сонсох</button>
+    <button class="a-btn" onclick="stopAllAudio()">⏹ Зогсоох</button>
+  </div>
+</div>
+
+<div class="modal" id="gameModal">
+  <div class="modal-box">
+    <button class="close-modal" onclick="closeModal()">✕</button>
+    <div class="modal-header">
+      <h3 id="modalTitle">Ертөнцийн нэр</h3>
+      <p id="modalDesc">Тайлбар</p>
+    </div>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+// =========================================================
+// 1. ХОС АУДИО ХӨДӨЛГҮҮР (TTS + БАГШИЙН ОРУУЛСАН ДУУ АВИА)
+// =========================================================
+let lastGeneratedText = "Сайн уу, бяцхан найз аа!";
+let speechQueue = [], isSpeakingQueue = false, currentCloudAudio = null;
+
+function stopAllAudio() {
+  isSpeakingQueue = false; speechQueue = [];
+  if (currentCloudAudio) { currentCloudAudio.pause(); currentCloudAudio = null; }
+  const robot = document.getElementById('heroRobot');
+  if (robot) robot.classList.remove('speaking');
+  if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+}
+
+function playCustomAudioData(audioSrc, labelText = "Багшийн дуу хоолой") {
+  stopAllAudio();
+  const robot = document.getElementById('heroRobot');
+  if (robot) robot.classList.add('speaking');
+  document.getElementById('audioStatus').innerText = `🎙️ Тоглуулж байна: ${labelText}`;
+  const audio = new Audio(audioSrc);
+  currentCloudAudio = audio;
+  audio.onended = () => {
+    currentCloudAudio = null;
+    if (robot) robot.classList.remove('speaking');
+  };
+  audio.play();
+}
+
+function speakCleanText(text, onFinishCallback = null) {
+  if (!text) return;
+  stopAllAudio();
+  lastGeneratedText = text;
+  const robot = document.getElementById('heroRobot');
+  if (robot) robot.classList.add('speaking');
+  document.getElementById('audioStatus').innerText = `🗣 ${text}`;
+
+  const clean = text.replace(/[^\u0400-\u04FFa-zA-Z0-9\s.,!?—-]/g, '').trim();
+  const sentences = clean.split(/(?<=[.!?])\s+/).filter(s => s.length > 0);
+  speechQueue = sentences.length > 0 ? sentences : [clean];
+  isSpeakingQueue = true;
+
+  function playSentenceItem() {
+    if (!isSpeakingQueue || speechQueue.length === 0) {
+      isSpeakingQueue = false;
+      if (robot) robot.classList.remove('speaking');
+      if (onFinishCallback) onFinishCallback();
+      return;
+    }
+    const sentence = speechQueue.shift();
+    const voices = ('speechSynthesis' in window) ? window.speechSynthesis.getVoices() : [];
+    const mnVoice = voices.find(v => v.lang.toLowerCase().includes('mn'));
+
+    if (mnVoice && 'speechSynthesis' in window) {
+      const utt = new SpeechSynthesisUtterance(sentence);
+      utt.voice = mnVoice; utt.lang = 'mn-MN'; utt.rate = 0.88;
+      utt.onend = () => setTimeout(playSentenceItem, 220);
+      utt.onerror = () => playCloudMongolianTTS(sentence, playSentenceItem);
+      window.speechSynthesis.speak(utt);
+    } else {
+      playCloudMongolianTTS(sentence, playSentenceItem);
+    }
+  }
+  playSentenceItem();
+}
+
+function playCloudMongolianTTS(sentence, nextCallback) {
+  const url = `https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=mn&q=${encodeURIComponent(sentence)}`;
+  const audio = new Audio(url);
+  currentCloudAudio = audio;
+  audio.playbackRate = 0.94;
+  audio.onended = () => { currentCloudAudio = null; setTimeout(nextCallback, 220); };
+  audio.onerror = () => {
+    if ('speechSynthesis' in window) {
+      const utt = new SpeechSynthesisUtterance(sentence);
+      utt.lang = 'mn-MN'; utt.onend = () => setTimeout(nextCallback, 220);
+      utt.onerror = () => setTimeout(nextCallback, 2000);
+      window.speechSynthesis.speak(utt);
+    } else setTimeout(nextCallback, 2000);
+  };
+  audio.play().catch(() => {
+    if ('speechSynthesis' in window) {
+      const utt = new SpeechSynthesisUtterance(sentence);
+      utt.lang = 'mn-MN'; utt.onend = () => setTimeout(nextCallback, 220);
+      window.speechSynthesis.speak(utt);
+    }
+  });
+}
+
+function speakSyllableMode(text) {
+  if (!text) return;
+  const first = text.split(/[.!?]/)[0];
+  const words = first.split(' ').slice(0, 3);
+  const spelled = words.map(w => w.replace(/[^а-яА-ЯөӨүҮёЁ]/g, '').split('').join('-')).join('. ');
+  speakCleanText(`${spelled}. ${first}`);
+}
+
+function playAnimalSoundEffect(type) {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const now = ctx.currentTime;
+    const osc = ctx.createOscillator(), g = ctx.createGain();
+    osc.type = 'triangle'; osc.frequency.setValueAtTime(type === 'dog' ? 210 : type === 'cat' ? 560 : 380, now);
+    g.gain.setValueAtTime(0.22, now); g.gain.exponentialRampToValueAtTime(0.01, now + 0.4);
+    osc.connect(g); g.connect(ctx.destination); osc.start(now); osc.stop(now + 0.4);
+  } catch (e) {}
+}
+
+// =========================================================
+// 2. INDEXEDDB + FIREBASE ҮҮЛЭН ӨГӨГДЛИЙН САН (БҮХ 10 ЕРТӨНЦИЙН КОНТЕНТ)
+// =========================================================
+// Энд өөрийн Firebase Realtime Database URL-ийг нэг удаа бичээд хадгалбал бүх утас, компьютер дээр холбогдоно:
+const DEFAULT_FIREBASE_URL = "";
+
+let dbInstance = null;
+let allWorldItems = []; // Бүх 10 ертөнцөд таны оруулсан зураг, бичлэг, дуу хоолой, асуултууд
+
+function initIndexedDB() {
+  return new Promise((resolve) => {
+    const req = indexedDB.open("ByatskhanAIMediaDB", 1);
+    req.onupgradeneeded = (e) => {
+      const db = e.target.result;
+      if (!db.objectStoreNames.contains("items")) {
+        db.createObjectStore("items", { keyPath: "id" });
+      }
+    };
+    req.onsuccess = (e) => {
+      dbInstance = e.target.result;
+      resolve();
+    };
+    req.onerror = () => resolve();
+  });
+}
+
+function getAllItemsFromIDB() {
+  return new Promise((resolve) => {
+    if (!dbInstance) { resolve([]); return; }
+    const tx = dbInstance.transaction("items", "readonly");
+    const store = tx.objectStore("items");
+    const req = store.getAll();
+    req.onsuccess = () => resolve(req.result || []);
+    req.onerror = () => resolve([]);
+  });
+}
+
+function saveItemToIDB(item) {
+  return new Promise((resolve) => {
+    if (!dbInstance) { resolve(); return; }
+    const tx = dbInstance.transaction("items", "readwrite");
+    tx.objectStore("items").put(item);
+    tx.oncomplete = () => resolve();
+  });
+}
+
+function deleteItemFromIDB(id) {
+  return new Promise((resolve) => {
+    if (!dbInstance) { resolve(); return; }
+    const tx = dbInstance.transaction("items", "readwrite");
+    tx.objectStore("items").delete(id);
+    tx.oncomplete = () => resolve();
+  });
+}
+
+function getFirebaseUrl() {
+  return (localStorage.getItem('firebase_db_url') || DEFAULT_FIREBASE_URL).replace(/\/$/, "");
+}
+
+async function loadAllContent() {
+  await initIndexedDB();
+  const localItems = await getAllItemsFromIDB();
+  let cloudItems = [];
+
+  const dbUrl = getFirebaseUrl();
+  if (dbUrl) {
+    try {
+      document.getElementById('cloudSyncStatus').innerText = "☁️ Үүлэн сангаас татаж байна...";
+      const res = await fetch(`${dbUrl}/world_items.json`);
+      const data = await res.json();
+      if (data && Array.isArray(data)) cloudItems = data;
+      document.getElementById('cloudSyncStatus').innerText = "☁️ Үүлэн сан холбогдсон ✅";
+    } catch (e) {
+      document.getElementById('cloudSyncStatus').innerText = "⚠️ Үүлэн холбоос алдаатай";
+    }
+  } else {
+    document.getElementById('cloudSyncStatus').innerText = "💾 Төхөөрөмжийн санах ой ✅";
+  }
+
+  // Давхардуулахгүй нэгтгэнэ
+  const map = new Map();
+  cloudItems.forEach(x => map.set(x.id, x));
+  localItems.forEach(x => map.set(x.id, x));
+  allWorldItems = Array.from(map.values()).sort((a, b) => b.createdAt - a.createdAt);
+}
+
+async function syncCloudLightweight() {
+  const dbUrl = getFirebaseUrl();
+  if (!dbUrl) return;
+  // Хэт том локал файл биш линк болон текстүүдийг Firebase руу илгээнэ
+  const shareable = allWorldItems.filter(x => !x.isHeavyBlob);
+  try {
+    await fetch(`${dbUrl}/world_items.json`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(shareable)
+    });
+  } catch (e) {}
+}
+
+// =========================================================
+// 3. ЗӨВХӨН БАГШИЙН НУУЦ УДИРДЛАГЫН САМБАР (10 ЕРТӨНЦИЙГ БҮГДИЙГ УДИРДАНА)
+// =========================================================
+let isAdminLoggedIn = false;
+let mediaRecorder = null;
+let recordedChunks = [];
+let tempRecordedAudioDataUrl = null;
+let tempUploadedImageDataUrl = null;
+let tempUploadedVideoDataUrl = null;
+let tempUploadedAudioFileDataUrl = null;
+
+function openAdminAuth() {
+  if (isAdminLoggedIn) { renderAdminDashboard(); return; }
+  const savedPass = localStorage.getItem('admin_secret_pass') || '1234';
+  const input = prompt("🔒 Зөвхөн Багш / Админ нэвтрэх нууц үгээ оруулна уу:\n(Анхны нууц үг: 1234)");
+  if (input === savedPass) {
+    isAdminLoggedIn = true;
+    document.getElementById('adminLockBtn').innerText = "Багшийн самбар 🔓";
+    renderAdminDashboard();
+  } else if (input !== null) {
+    alert("❌ Нууц үг буруу байна!");
+  }
+}
+
+function renderAdminDashboard() {
+  stopTalePlayback();
+  tempRecordedAudioDataUrl = null;
+  tempUploadedImageDataUrl = null;
+  tempUploadedVideoDataUrl = null;
+  tempUploadedAudioFileDataUrl = null;
+
+  document.getElementById('modalTitle').innerText = "🛠️ Багшийн Бүрэн Удирдлагын Самбар (10 Ертөнц)";
+  document.getElementById('modalDesc').innerText = "Аль ч ертөнцийг сонгоод зураг, өөрийн хийсэн бичлэг, дуу хоолой, асуулт-хариулт нэмж хасаарай.";
+
+  const worldOptions = worldsData.map(w => `<option value="${w.id}">${w.id}. ${w.title}</option>`).join('');
+  const currentDbUrl = getFirebaseUrl();
+
+  document.getElementById('modalBody').innerHTML = `
+    <!-- 0. ҮҮЛЭН САНГИЙН ХОЛБОЛТ -->
+    <div class="admin-section" style="background:#eef7ff; border-color:#74b9ff;">
+      <h4>☁️ Үүлэн сангийн холболт (Олон утас, компьютер дээр зэрэг харагдуулах)</h4>
+      <div style="display:flex; gap:8px; flex-wrap:wrap;">
+        <input type="text" id="admFirebaseUrl" class="admin-input" style="flex:1;" value="${currentDbUrl}" placeholder="Firebase URL (Жишээ: https://...-default-rtdb.firebaseio.com)">
+        <button class="btn-add" onclick="saveFirebaseConfig()">💾 Холбох</button>
+      </div>
+    </div>
+
+    <!-- 1. АЛЬ Ч ЕРТӨНЦ ДЭЭР ШИНЭ КОНТЕНТ НЭМЭХ МАЯГТ -->
+    <div class="admin-section" style="border-color:#00b894;">
+      <h4>➕ Аль ч Ертөнц дээр Шинэ Материал Нэмэх</h4>
+
+      <div class="admin-form-grid">
+        <div>
+          <label style="font-size:12px; font-weight:900; color:#6c5ce7;">1. Аль ертөнцөд оруулах вэ?</label>
+          <select id="admTargetWorld" class="admin-input">${worldOptions}</select>
+        </div>
+        <div>
+          <label style="font-size:12px; font-weight:900; color:#6c5ce7;">2. Гарчиг / Нэр:</label>
+          <input type="text" id="admItemTitle" class="admin-input" placeholder="Жишээ: Миний хийсэн үлгэр / Баавгай">
+        </div>
+      </div>
+
+      <div class="admin-form-grid">
+        <div>
+          <label style="font-size:12px; font-weight:900; color:#6c5ce7;">3. Тайлбар / Үлгэрийн текст (Ану уншина):</label>
+          <input type="text" id="admItemDesc" class="admin-input" placeholder="Хүүхдэд уншиж өгөх тайлбар эсвэл үлгэр...">
+        </div>
+        <div>
+          <label style="font-size:12px; font-weight:900; color:#6c5ce7;">4. Нэмэлт мэдээлэл (Төл мал / Хоол / Асуулт):</label>
+          <input type="text" id="admItemExtra" class="admin-input" placeholder="Жишээ: Төл нь бамбарууш, зөгийн бал иддэг">
+        </div>
+      </div>
+
+      <!-- ЗУРАГ ОРУУЛАХ -->
+      <div style="background:#ffffff; padding:12px; border-radius:14px; margin-bottom:10px; border:1px solid #dfe6e9;">
+        <strong style="font-size:13px; color:#2d3436;">🖼️ Зураг оруулах (Сонголттой):</strong>
+        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:6px; align-items:center;">
+          <input type="text" id="admImgLink" class="admin-input" style="flex:1;" placeholder="Зургийн линк эсвэл хажуугаас файл сонгоно">
+          <label class="story-tab custom-tale-tab" style="cursor:pointer;">
+            📷 Компьютероос зураг сонгох
+            <input type="file" accept="image/*" style="display:none" onchange="handleAdminImageFile(event)">
+          </label>
+        </div>
+        <small id="imgFileStatus" style="color:#00b894; font-weight:800;"></small>
+      </div>
+
+      <!-- ӨӨРИЙН ХИЙСЭН БИЧЛЭГ (MP4) ЭСВЭЛ YOUTUBE ОРУУЛАХ -->
+      <div style="background:#ffffff; padding:12px; border-radius:14px; margin-bottom:10px; border:1px solid #dfe6e9;">
+        <strong style="font-size:13px; color:#2d3436;">🎬 Өөрийн хийсэн бичлэг (MP4) эсвэл YouTube линк оруулах:</strong>
+        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:6px; align-items:center;">
+          <input type="text" id="admVidLink" class="admin-input" style="flex:1;" placeholder="YouTube линк эсвэл хажуугаас өөрийн MP4 бичлэгийг сонгоно">
+          <label class="story-tab custom-tale-tab" style="cursor:pointer;">
+            📹 Өөрийн хийсэн бичлэг (MP4) сонгох
+            <input type="file" accept="video/*" style="display:none" onchange="handleAdminVideoFile(event)">
+          </label>
+        </div>
+        <small id="vidFileStatus" style="color:#00b894; font-weight:800;"></small>
+      </div>
+
+      <!-- ӨӨРӨӨ ДУУ АВИА БИЧИХ ЭСВЭЛ MP3 ФАЙЛ ОРУУЛАХ -->
+      <div style="background:#ffffff; padding:12px; border-radius:14px; margin-bottom:12px; border:1px solid #dfe6e9;">
+        <strong style="font-size:13px; color:#2d3436;">🎙️ Өөрөө дуу хоолойгоо бичих эсвэл MP3 аудио файл оруулах:</strong>
+        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px; align-items:center;">
+          <button type="button" class="btn-rec" id="recordMicBtn" onclick="toggleVoiceRecording()">🔴 Микрофоноор дуу бичих</button>
+          <label class="story-tab" style="cursor:pointer;">
+            🎵 Бэлэн дуу авиа (MP3/WAV) оруулах
+            <input type="file" accept="audio/*" style="display:none" onchange="handleAdminAudioFile(event)">
+          </label>
+        </div>
+        <small id="audioRecStatus" style="display:block; margin-top:6px; color:#e17055; font-weight:800;"></small>
+        <div id="audioPreviewBox"></div>
+      </div>
+
+      <button class="btn-add" style="width:100%; padding:14px; font-size:15px;" onclick="saveNewAdminWorldItem()">✅ Сонгосон ертөнц рүү хадгалах ба нийтлэх!</button>
+    </div>
+
+    <!-- 2. ОРУУЛСАН БҮХ КОНТЕНТЫН ЖАГСААЛТ БА УСТГАХ -->
+    <div class="admin-section">
+      <h4>📋 Таны оруулсан бүх материал (${allWorldItems.length} ширхэг)</h4>
+      <div style="max-height:280px; overflow-y:auto;">
+        ${allWorldItems.length === 0 ? '<p style="font-size:13px; color:#636e72;">Одоогоор нэмсэн материал алга байна.</p>' : ''}
+        ${allWorldItems.map(item => `
+          <div class="admin-list-item">
+            <div>
+              <span style="background:#a29bfe; color:#fff; padding:2px 8px; border-radius:8px; font-size:11px;">${item.worldId}-р ертөнц</span>
+              <strong>${item.title}</strong>
+              <span style="color:#636e72; font-size:12px;">
+                ${item.img ? '🖼️ Зураг' : ''} ${item.video ? '🎬 Бичлэг' : ''} ${item.audio ? '🎙️ Дуу авиа' : ''}
+              </span>
+            </div>
+            <button class="btn-del" onclick="deleteAdminWorldItem('${item.id}')">🗑️ Устгах</button>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+
+    <!-- 3. НУУЦ ҮГ СОЛИХ БА ГАРАХ -->
+    <div class="admin-section" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;">
+      <button class="a-btn" onclick="adminChangePassword()">🔑 Админ нууц үг солих</button>
+      <button class="btn-del" onclick="adminLogout()">🔒 Админаас гарах (Түгжих)</button>
+    </div>
+  `;
+
+  document.getElementById('gameModal').style.display = 'flex';
+}
+
+function handleAdminImageFile(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (ev) => {
+    tempUploadedImageDataUrl = ev.target.result;
+    document.getElementById('imgFileStatus').innerText = `✅ Зураг сонгогдлоо: ${file.name}`;
+  };
+  reader.readAsDataURL(file);
+}
+
+function handleAdminVideoFile(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (ev) => {
+    tempUploadedVideoDataUrl = ev.target.result;
+    document.getElementById('vidFileStatus').innerText = `✅ Видео бичлэг сонгогдлоо: ${file.name}`;
+  };
+  reader.readAsDataURL(file);
+}
+
+function handleAdminAudioFile(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (ev) => {
+    tempUploadedAudioFileDataUrl = ev.target.result;
+    document.getElementById('audioRecStatus').innerText = `✅ Аудио файл сонгогдлоо: ${file.name}`;
+    document.getElementById('audioPreviewBox').innerHTML = `<audio controls src="${tempUploadedAudioFileDataUrl}" style="width:100%; margin-top:6px;"></audio>`;
+  };
+  reader.readAsDataURL(file);
+}
+
+async function toggleVoiceRecording() {
+  const btn = document.getElementById('recordMicBtn');
+  const status = document.getElementById('audioRecStatus');
+
+  if (mediaRecorder && mediaRecorder.state === "recording") {
+    mediaRecorder.stop();
+    btn.classList.remove('recording');
+    btn.innerText = "🔴 Дахин дуу бичих";
+    return;
+  }
+
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    recordedChunks = [];
+    mediaRecorder = new MediaRecorder(stream);
+    mediaRecorder.ondataavailable = (e) => { if (e.data.size > 0) recordedChunks.push(e.data); };
+    mediaRecorder.onstop = () => {
+      const blob = new Blob(recordedChunks, { type: 'audio/webm' });
+      const reader = new FileReader();
+      reader.onload = (ev) => {
+        tempRecordedAudioDataUrl = ev.target.result;
+        status.innerText = "✅ Таны дуу хоолой амжилттай бичигдлээ! Доороос сонсож шалгана уу:";
+        document.getElementById('audioPreviewBox').innerHTML = `<audio controls src="${tempRecordedAudioDataUrl}" style="width:100%; margin-top:6px;"></audio>`;
+      };
+      reader.readAsDataURL(blob);
+      stream.getTracks().forEach(t => t.stop());
+    };
+    mediaRecorder.start();
+    btn.classList.add('recording');
+    btn.innerText = "⏹ Бичлэгийг зогсоох (Дууссан бол дарна уу)";
+    status.innerText = "🎙️ Микрофон бичиж байна... Одоо ярина уу!";
+  } catch (err) {
+    alert("Микрофон ашиглах зөвшөөрөл олгоно уу!");
+  }
+}
+
+async function saveNewAdminWorldItem() {
+  const worldId = parseInt(document.getElementById('admTargetWorld').value, 10);
+  const title = document.getElementById('admItemTitle').value.trim();
+  const desc = document.getElementById('admItemDesc').value.trim();
+  const extra = document.getElementById('admItemExtra').value.trim();
+
+  const img = tempUploadedImageDataUrl || document.getElementById('admImgLink').value.trim();
+  const video = tempUploadedVideoDataUrl || document.getElementById('admVidLink').value.trim();
+  const audio = tempRecordedAudioDataUrl || tempUploadedAudioFileDataUrl || "";
+
+  if (!title) { alert("Гарчиг эсвэл нэрийг заавал бичнэ үү!"); return; }
+
+  const isHeavyBlob = Boolean(tempUploadedVideoDataUrl || tempUploadedImageDataUrl || tempRecordedAudioDataUrl || tempUploadedAudioFileDataUrl);
+
+  const newItem = {
+    id: "witem_" + Date.now(),
+    worldId,
+    title,
+    desc: desc || `${title}. Энэ бол ${title} байна.`,
+    extra: extra || "Багшийн нэмсэн материал",
+    img,
+    video,
+    audio,
+    isHeavyBlob,
+    createdAt: Date.now()
+  };
+
+  await saveItemToIDB(newItem);
+  allWorldItems.unshift(newItem);
+  await syncCloudLightweight();
+
+  alert(`✅ "${title}" материал ${worldId}-р ертөнцөд амжилттай хадгалагдлаа!`);
+  renderAdminDashboard();
+}
+
+async function deleteAdminWorldItem(id) {
+  await deleteItemFromIDB(id);
+  allWorldItems = allWorldItems.filter(x => x.id !== id);
+  await syncCloudLightweight();
+  renderAdminDashboard();
+}
+
+async function saveFirebaseConfig() {
+  const url = document.getElementById('admFirebaseUrl').value.trim();
+  localStorage.setItem('firebase_db_url', url);
+  await loadAllContent();
+  alert("✅ Үүлэн сантай амжилттай холбогдлоо!");
+  renderAdminDashboard();
+}
+
+function adminChangePassword() {
+  const newPass = prompt("Шинэ нууц үгээ оруулна уу:");
+  if (newPass && newPass.trim().length >= 3) {
+    localStorage.setItem('admin_secret_pass', newPass.trim());
+    alert("✅ Нууц үг солигдлоо!");
+  }
+}
+
+function adminLogout() {
+  isAdminLoggedIn = false;
+  document.getElementById('adminLockBtn').innerText = "Багшийн самбар 🔒";
+  closeModal();
+}
+
+// =========================================================
+// 4. АЛЬ Ч ЕРТӨНЦ ДЭЭР БАГШИЙН ОРУУЛСАН ЗУРАГ, БИЧЛЭГ, ДУУГ ХАРУУЛАХ БҮС
+// =========================================================
+function renderCustomFeedForWorld(worldId) {
+  const items = allWorldItems.filter(x => x.worldId === worldId);
+  if (items.length === 0) return "";
+
+  return `
+    <div class="custom-world-feed">
+      <h4>🌟 Багшийн оруулсан тусгай материал (${items.length})</h4>
+      <div class="media-card-grid">
+        ${items.map(it => {
+          let mediaHtml = "";
+          if (it.video) {
+            if (it.video.includes('youtube.com') || it.video.includes('youtu.be')) {
+              const emb = it.video.replace("watch?v=", "embed/").replace("youtu.be/", "youtube.com/embed/");
+              mediaHtml += `<iframe width="100%" height="175" src="${emb}" frameborder="0" allowfullscreen style="border-radius:12px; margin-bottom:8px;"></iframe>`;
+            } else {
+              mediaHtml += `<video src="${it.video}" controls style="width:100%; max-height:185px; border-radius:12px; margin-bottom:8px;"></video>`;
+            }
+          }
+          if (it.img) {
+            mediaHtml += `<img src="${it.img}" alt="${it.title}" onclick="triggerItemAudio('${it.id}')">`;
+          }
+          if (it.audio) {
+            mediaHtml += `<audio controls src="${it.audio}"></audio>`;
+          }
+          return `
+            <div class="media-item-box">
+              ${mediaHtml}
+              <strong style="font-size:15px; color:#2d3436; display:block;">${it.title}</strong>
+              <p style="font-size:13px; color:#636e72; margin:4px 0;">${it.desc}</p>
+              <small style="display:block; color:#6c5ce7; font-weight:800; margin-bottom:8px;">✨ ${it.extra}</small>
+              <button class="a-btn green" style="width:100%;" onclick="triggerItemAudio('${it.id}')">🔊 Дуу хоолойгоор сонсох</button>
+            </div>
+          `;
+        }).join('')}
+      </div>
+    </div>
+  `;
+}
+
+function triggerItemAudio(itemId) {
+  const it = allWorldItems.find(x => x.id === itemId);
+  if (!it) return;
+  if (it.audio) {
+    playCustomAudioData(it.audio, it.title);
+  } else {
+    speakCleanText(`${it.title}. ${it.desc}. ${it.extra}`);
+  }
+}
+
+// =========================================================
+// 5. 1-Р ЕРТӨНЦ: АМИЛДАГ ЗУРАГ
+// =========================================================
+const defaultAnimals = [
+  { id: "horse", name: "Морь", syl: "Морь", type: "horse", emoji: "🐴", soundCall: "И-го-го!", babyInfo: "Унага (Адууны төл)", foodInfo: "Ногоон өвс, овъёос", bodyFeature: "Урт дэл сүүлтэй, хурдан давхидаг", fullDesc: "Морь. И-го-го! Морь бол урт дэл сүүлтэй хурдан давхидаг адууны том мал юм.", img: "https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?auto=format&fit=crop&w=600&q=85" },
+  { id: "foal", name: "Унага", syl: "У-на-га", type: "foal", emoji: "🐎", soundCall: "Үүрс-үүрс!", babyInfo: "Адууны төл мал", foodInfo: "Эхийн сүү, зөөлөн өвс", bodyFeature: "Урт нарийн хөлтэй, сэргэлэн", fullDesc: "Унага. У-на-га! Унага бол адууны хөөрхөн төл мал юм.", img: "https://images.unsplash.com/photo-1598974357801-cbca100e65d3?auto=format&fit=crop&w=600&q=85" },
+  { id: "cow", name: "Үхэр", syl: "Ү-хэр", type: "cow", emoji: "🐮", soundCall: "Мөө! Мөө!", babyInfo: "Тугал (Үхрийн төл)", foodInfo: "Шим тэжээлтэй өвс", bodyFeature: "Хоёр эвэртэй, цагаан сүү өгдөг", fullDesc: "Үхэр. Мөө, мөө! Үхэр бидэнд амттай цагаан сүү өгдөг.", img: "https://images.unsplash.com/photo-1546445317-29f4545e9d53?auto=format&fit=crop&w=600&q=85" },
+  { id: "calf", name: "Тугал", syl: "Ту-гал", type: "calf", emoji: "🐄", soundCall: "Мөө!", babyInfo: "Үхрийн төл мал", foodInfo: "Эхийн бүлээн сүү", bodyFeature: "Бүлтийсэн том нүдтэй хөөрхөн төл", fullDesc: "Тугал. Ту-гал! Тугал бол үхрийн бяцхан төл мал юм.", img: "https://images.unsplash.com/photo-1570042225831-d98fa7577f1e?auto=format&fit=crop&w=600&q=85" },
+  { id: "sheep", name: "Хонь", syl: "Хонь", type: "sheep", emoji: "🐑", soundCall: "Май! Май!", babyInfo: "Хурга (Хонины төл)", foodInfo: "Талын нарийн өвс", bodyFeature: "Дулаахан зөөлөн цагаан ноостой", fullDesc: "Хонь. Май, май! Хонь дулаахан зөөлөн ноостой мал юм.", img: "https://images.unsplash.com/photo-1484557985045-edf25e08da73?auto=format&fit=crop&w=600&q=85" },
+  { id: "lamb", name: "Хурга", syl: "Хур-га", type: "lamb", emoji: "🐑", soundCall: "Май!", babyInfo: "Хонины төл мал", foodInfo: "Эхийн сүү, нялх ногоо", bodyFeature: "Буржгар зөөлөн ноостой", fullDesc: "Хурга. Хур-га! Хурга бол хонины хөөрхөн төл мал юм.", img: "https://images.unsplash.com/photo-1511117833895-4b473c0b85d6?auto=format&fit=crop&w=600&q=85" },
+  { id: "goat", name: "Ямаа", syl: "Я-маа", type: "goat", emoji: "🐐", soundCall: "Мээ! Мээ!", babyInfo: "Ишиг (Ямааны төл)", foodInfo: "Уулын өвс, навч", bodyFeature: "Зөөлөн ноолууртай, сэргэлэн", fullDesc: "Ямаа. Мээ, мээ! Ямаа зөөлөн ноолууртай, сэргэлэн мал юм.", img: "https://images.unsplash.com/photo-1524024973431-2ad916746881?auto=format&fit=crop&w=600&q=85" },
+  { id: "kid", name: "Ишиг", syl: "И-шиг", type: "kid", emoji: "🐐", soundCall: "Мээ!", babyInfo: "Ямааны төл мал", foodInfo: "Эхийн сүү, нялх өвс", bodyFeature: "Хад чулуун дээгүүр цовхчин үсэрдэг", fullDesc: "Ишиг. И-шиг! Ишиг бол ямааны сэргэлэн төл мал юм.", img: "https://images.unsplash.com/photo-1560807707-8cc77767d783?auto=format&fit=crop&w=600&q=85" },
+  { id: "camel", name: "Тэмээ", syl: "Тэ-мээ", type: "camel", emoji: "🐫", soundCall: "Бүү! Бүү!", babyInfo: "Ботго (Тэмээний төл)", foodInfo: "Говийн заг, бударгана", bodyFeature: "Хоёр том бөхтэй, говийн хүчтэй мал", fullDesc: "Тэмээ. Бүү, бүү! Тэмээ хоёр бөхтэй, говийн хүчтэй мал юм.", img: "https://images.unsplash.com/photo-1547234935-80c7145ec969?auto=format&fit=crop&w=600&q=85" },
+  { id: "camelcalf", name: "Ботго", syl: "Бот-го", type: "calf", emoji: "🐪", soundCall: "Бүү!", babyInfo: "Тэмээний төл мал", foodInfo: "Эхийн ингэний сүү", bodyFeature: "Урт сормуустай, том алаг нүдтэй", fullDesc: "Ботго. Бот-го! Ботго бол тэмээний өхөөрдөм төл мал юм.", img: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=85" }
+];
+
+function getCombinedWorld1Animals() {
+  const customW1 = allWorldItems.filter(x => x.worldId === 1 && x.img).map(x => ({
+    id: x.id, name: x.title, syl: x.title.split('').join('-'), type: "pop", emoji: "🌟",
+    soundCall: x.audio ? "🎙️ Багшийн бичсэн дуу" : "Тод дуу авиа",
+    babyInfo: x.extra, foodInfo: "Тусгай тэжээл", bodyFeature: x.desc,
+    fullDesc: `${x.title}. ${x.desc}`, img: x.img, customAudio: x.audio
+  }));
+  return [...customW1, ...defaultAnimals];
+}
+
+let activeAnimalIdx = 0;
+
+function speakClearAnimal(id) {
+  const item = getCombinedWorld1Animals().find(a => a.id === id);
+  if (!item) return;
+  if (item.customAudio) { playCustomAudioData(item.customAudio, item.name); return; }
+  playAnimalSoundEffect(item.type);
+  setTimeout(() => speakCleanText(item.fullDesc), 450);
+}
+
+function renderWorld1(bodyEl) {
+  const list = getCombinedWorld1Animals();
+  if (activeAnimalIdx >= list.length) activeAnimalIdx = 0;
+  const cur = list[activeAnimalIdx];
+
+  bodyEl.innerHTML = `
+    <div id="world1InteractiveArea">
+      <div class="living-stage-box">
+        <div class="living-top-flex">
+          <div class="photo-frame" id="livingFrame" onclick="repeatAnimalVoice()">
+            <img id="livingImg" src="${cur.img}" alt="${cur.name}">
+            <div class="photo-overlay-badge" id="livingBadge">🔊 Дарж дуугаргах: ${cur.name} (${cur.syl})</div>
+          </div>
+          <div class="detail-grid-4">
+            <div class="detail-pill" onclick="repeatAnimalVoice()">
+              <small>🔊 Дуу авиа</small><strong id="detSound">${cur.soundCall}</strong>
+            </div>
+            <div class="detail-pill" onclick="speakCleanText('${cur.name}-н төлийг ${cur.babyInfo} гэдэг.')">
+              <small>👶 Төл / Төрөл</small><strong id="detBaby">${cur.babyInfo}</strong>
+            </div>
+            <div class="detail-pill" onclick="speakCleanText('${cur.name} юу иддэг вэ? ${cur.foodInfo}.')">
+              <small>🌿 Юу иддэг вэ?</small><strong id="detFood">${cur.foodInfo}</strong>
+            </div>
+            <div class="detail-pill" onclick="speakCleanText('${cur.bodyFeature}')">
+              <small>⭐ Онцлог шинж</small><strong id="detBody">${cur.bodyFeature}</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid-cards">
+        ${list.map((a, idx) => `
+          <div class="item-card ${idx === activeAnimalIdx ? 'active-animal' : ''}" id="acard_${idx}" onclick="pickLivingAnimal(${idx})">
+            <img src="${a.img}" alt="${a.name}">
+            <strong>${a.name}</strong>
+            <small style="color:#6c5ce7; font-weight:800;">${a.syl}</small>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+    ${renderCustomFeedForWorld(1)}
+  `;
+  repeatAnimalVoice();
+}
+
+function pickLivingAnimal(idx) {
+  const list = getCombinedWorld1Animals();
+  activeAnimalIdx = idx;
+  const cur = list[idx];
+  document.querySelectorAll('.item-card').forEach(el => el.classList.remove('active-animal'));
+  const card = document.getElementById(`acard_${idx}`);
+  if (card) card.classList.add('active-animal');
+
+  document.getElementById('livingImg').src = cur.img;
+  document.getElementById('livingBadge').innerText = `🔊 Дарж дуугаргах: ${cur.name} (${cur.syl})`;
+  document.getElementById('detSound').innerText = cur.soundCall;
+  document.getElementById('detBaby').innerText = cur.babyInfo;
+  document.getElementById('detFood').innerText = cur.foodInfo;
+  document.getElementById('detBody').innerText = cur.bodyFeature;
+  repeatAnimalVoice();
+}
+
+function repeatAnimalVoice() {
+  const cur = getCombinedWorld1Animals()[activeAnimalIdx];
+  const frame = document.getElementById('livingFrame');
+  if (frame) { frame.classList.add('talking'); setTimeout(() => frame.classList.remove('talking'), 1300); }
+  if (cur.customAudio) { playCustomAudioData(cur.customAudio, cur.name); return; }
+  playAnimalSoundEffect(cur.type);
+  setTimeout(() => speakCleanText(cur.fullDesc), 450);
+}
+
+// =========================================================
+// 6. 2-Р ЕРТӨНЦ: ҮЛГЭРИЙН ТЕАТР + БАГШИЙН БИЧЛЭГ, ҮЛГЭРҮҮД
+// =========================================================
+const realClassicTales = [
+  { title: "🧣 1. Улаан малгайт", scenes: [{ bg: "linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)", actors: "👧 🧣 🏡", text: "Эрт урьдын цагт ээждээ их хайртай Улаан малгайт охин эмээдээ амтат боов, цөцгий хүргэж өгөхөөр ойн жимээр явж байтал саарал чоно тааралджээ. Ойн анчин ах тусламжид ирж эмээ охин хоёрыг аварлаа." }] },
+  { title: "🌱 2. Манжингийн үлгэр", scenes: [{ bg: "linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%)", actors: "👴 👵 👧 🐶 🐱 🐭 🥕", text: "Өвгөн, эмгэн, ач охин, нохой, муур, бяцхан хулгана бүгд хүчээ нийлүүлэн татмагц аварга манжин сугаран гарч ирлээ! Эвтэй байвал хүчтэй!" }] },
+  { title: "🥯 3. Өнхрүүшийн үлгэр", scenes: [{ bg: "linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)", actors: "👴 👵 🥯 🦊", text: "Эмгэний барьсан шаргал Өнхрүүш туулай, чоно, баавгайгаас зугтаж, зальтай шар үнэгэнд хуурталгүй өвгөн эмгэн хоёртоо эсэн мэнд буцаж иржээ." }] },
+  { title: "🐷 4. Гурван тоорой", scenes: [{ bg: "linear-gradient(135deg, #f6d365 0%, #fda085 100%)", actors: "🐷 🐷 🐷 🏰", text: "Ниф-Ниф сүрлэн байшин, Нуф-Нуф мөчрөн байшин, харин ажилсаг Наф-Наф бат бөх чулуун байшин барьснаар саарал чононоос аврагджээ." }] },
+  { title: "🏠 5. Туулайн байшин", scenes: [{ bg: "linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%)", actors: "🐇 🐓 🏠 ❤️", text: "Зоригтой азарган тахиа туулайд тусалж зальтай үнэгийг хөөн гаргаснаар туулай, азарган тахиа хоёр дулаахан модон байшиндаа хамт амьдардаг болжээ." }] }
+];
+
+let taleTimeout = null;
+function stopTalePlayback() { clearTimeout(taleTimeout); stopAllAudio(); }
+
+function renderWorld2(bodyEl) {
+  const customW2 = allWorldItems.filter(x => x.worldId === 2);
+  const taleBtns = realClassicTales.map((t, i) => `
+    <button class="story-tab ${i === 0 ? 'active' : ''}" onclick="startRealTale(${i}, this)">${t.title}</button>
+  `).join('');
+
+  bodyEl.innerHTML = `
+    <div class="story-tabs">${taleBtns}</div>
+    <div id="taleStageArea"></div>
+    ${renderCustomFeedForWorld(2)}
+  `;
+  if (customW2.length > 0 && customW2[0].audio) {
+    playCustomAudioData(customW2[0].audio, customW2[0].title);
+  }
+  startRealTale(0, null);
+}
+
+function startRealTale(idx, btn) {
+  stopTalePlayback();
+  if (btn) { document.querySelectorAll('.story-tab').forEach(x => x.classList.remove('active')); btn.classList.add('active'); }
+  const tale = realClassicTales[idx];
+  const sc = tale.scenes[0];
+  document.getElementById('taleStageArea').innerHTML = `
+    <div class="video-theater">
+      <div class="video-screen" style="background:${sc.bg};">
+        <div class="v-actors">${sc.actors}</div>
+        <div class="v-subtitle">${sc.text}</div>
+      </div>
+    </div>
+  `;
+  speakCleanText(sc.text);
+}
+
+// =========================================================
+// 7. 10 ЕРТӨНЦ БҮРИЙН НЭЭЛТ БА АЖИЛЛАГАА
+// =========================================================
+const worldsData = [
+  { id: 1, title: "Амилдаг зураг", desc: "Таван хошуу мал, амьтдын амьд мэт зураг, дуу авиа ба багшийн оруулсан зургууд", icon: "🎨", theme: "w-theme-1", badge: "Зураг + Дуу авиа" },
+  { id: 2, title: "AI үлгэрийн ертөнц", desc: "5 Бодит үлгэр болон багшийн өөрөө хийсэн видео бичлэг, дуу хоолойт үлгэрүүд", icon: "🎬", theme: "w-theme-2", badge: "Бичлэг + Үлгэр" },
+  { id: 3, title: "AI миний найз", desc: "Хүүхдийн асуусан асуултад хариулж, багшийн оруулсан дуу хоолойг сонсоно", icon: "🤖", theme: "w-theme-3", badge: "Харилцан яриа" },
+  { id: 4, title: "Хүүхэд бүр өөр", desc: "Үеэр тод дуудах, тоо тоолох, багшийн тусгай дуу авианы дасгалууд", icon: "🧩", theme: "w-theme-4", badge: "Тод авиа дуудлага" },
+  { id: 5, title: "AI багшийн туслах", desc: "Таван хошуу мал, эрүүл мэнд, ёс заншлын хичээл ба багшийн бичлэгүүд", icon: "👩‍🏫", theme: "w-theme-5", badge: "Багшийн хичээл" },
+  { id: 6, title: "Ухаалаг жимсний цэцэрлэг", desc: "Жимс, хүнсний ногоог зургаар таньж авиагаар дуудах тоглоом", icon: "🍓", theme: "w-theme-6", badge: "Жимс ба Ногоо" },
+  { id: 7, title: "Сэтгэл хөдлөлийн найз", desc: "Баяр, гуниг, уур зэрэг сэтгэл хөдлөлөө таньж ярилцах найз", icon: "😊", theme: "w-theme-7", badge: "Сэтгэл хөдлөл" },
+  { id: 8, title: "AI ба хөдөлгөөн", desc: "Амьтдын хөдөлгөөн болон багшийн оруулсан дасгалын бичлэгийг дуурайх", icon: "🤸", theme: "w-theme-8", badge: "Хөдөлгөөн + Видео" },
+  { id: 9, title: "Цаг хугацааны машин", desc: "Монгол тал нутаг, Сансар, Үлэг гүрвэл рүү аялах машин", icon: "🚀", theme: "w-theme-9", badge: "Шидэт аялал" },
+  { id: 10, title: "Нууцлаг хайрцаг", desc: "Сэжүүрээр тааж нууцлаг хайрцгийг онгойлгон доторх зүйлийг нэрлэх тоглоом", icon: "🎁", theme: "w-theme-10", badge: "Таавар тоглоом" }
+];
+
+function renderWorldsGrid() {
+  document.getElementById('worldsGrid').innerHTML = worldsData.map(w => {
+    const count = allWorldItems.filter(x => x.worldId === w.id).length;
+    const badgeText = count > 0 ? `${w.badge} (+${count} шинэ)` : w.badge;
+    return `
+      <div class="world-card ${w.theme}" onclick="openWorldById(${w.id})">
+        <div>
+          <div class="w-icon">${w.icon}</div>
+          <h4>${w.id}. ${w.title}</h4>
+          <p>${w.desc}</p>
+        </div>
+        <span class="w-badge">✦ ${badgeText}</span>
+      </div>
+    `;
+  }).join('');
+}
+
+function openWorldById(id) {
+  const w = worldsData.find(x => x.id === id);
+  if (!w) return;
+  stopTalePlayback();
+  const age = document.getElementById('ageSelect').value;
+  document.getElementById('modalTitle').innerText = `${w.icon} ${w.title} (${age} нас)`;
+  document.getElementById('modalDesc').innerText = w.desc;
+  const body = document.getElementById('modalBody');
+
+  if (id === 1) renderWorld1(body);
+  else if (id === 2) renderWorld2(body);
+  else {
+    body.innerHTML = `
+      <div class="chat-box" id="wChatBox">Сайн уу, найз аа! "${w.title}" ертөнцөд тавтай морил! Доорх багшийн оруулсан бичлэг, дуу хоолой, зургуудыг үзэж сонирхоорой!</div>
+      <div class="input-bar">
+        <input type="text" id="wChatInput" placeholder="Асуултаа бичээрэй..." onkeypress="if(event.key==='Enter') replyWorldChat()">
+        <button class="btn-send" onclick="replyWorldChat()">Асуух ✨</button>
+      </div>
+      ${renderCustomFeedForWorld(id)}
+    `;
+    speakCleanText(`${w.title}. ${w.desc}`);
+  }
+  document.getElementById('gameModal').style.display = 'flex';
+}
+
+function replyWorldChat() {
+  const inp = document.getElementById('wChatInput');
+  const q = inp.value.trim();
+  if (!q) return;
+  const ans = `Сайн асуулт байна! "${q}" гэдэг бол их сонирхолтой. Харин чи энэ ертөнцөөс юу сурсан бэ?`;
+  document.getElementById('wChatBox').innerHTML = `<strong>Чи:</strong> ${q}<br><br><strong>🤖 Ану:</strong> ${ans}`;
+  speakCleanText(ans);
+}
+
+function closeModal() {
+  stopTalePlayback();
+  document.getElementById('gameModal').style.display = 'none';
+  renderWorldsGrid();
+}
+function updateAge() { document.getElementById('audioStatus').innerText = `Насны ангилал: ${document.getElementById('ageSelect').value} нас.`; }
+
+// Эхлэх үед бүх өгөгдлийг ачаална
+loadAllContent().then(() => renderWorldsGrid());
+</script>
+</body>
+</html>
